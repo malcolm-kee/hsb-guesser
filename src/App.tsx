@@ -38,8 +38,8 @@ function App() {
   const [state, setState] = React.useState<AppState>({ mode: 'quiz' });
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <h1 className="text-6xl text-center font-extrabold text-zinc-600">
+    <div className="max-w-2xl px-3 mx-auto">
+      <h1 className="text-6xl text-center font-extrabold text-zinc-600 py-3">
         HSB Guesser
       </h1>
       {state.mode === 'quiz' ? (
@@ -111,6 +111,13 @@ function HsbQuiz(props: {
   const [hueGuess, setHueGuess] = React.useState('');
   const [saturationGuess, setSaturationGuess] = React.useState('');
   const [brightnessGuess, setBrightnessGuess] = React.useState('');
+  const hueGuessInputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    if (state.mode === 'guess' && hueGuessInputRef.current) {
+      hueGuessInputRef.current.focus();
+    }
+  }, [state.mode]);
 
   const isDisplayingResult = state.mode === 'result';
 
@@ -198,6 +205,7 @@ function HsbQuiz(props: {
                 step={1}
                 required
                 disabled={isDisplayingResult}
+                ref={hueGuessInputRef}
               />
             </div>
             <RangeInput
