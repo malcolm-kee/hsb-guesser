@@ -189,12 +189,12 @@ function HsbQuiz(props: {
         }}
         className="py-6"
       >
-        <div className="grid gap-6">
-          <div className="flex items-center gap-2">
+        <div className="grid gap-12 md:gap-6">
+          <div className="flex flex-col md:flex-row md:items-center gap-2">
             <Label className="w-28 flex-shrink-0" htmlFor="hue">
               Hue (&deg;)
             </Label>
-            <div className="w-36 flex-shrink-0">
+            <div className="md:w-36 flex-shrink-0">
               <Input
                 type="number"
                 id="hue"
@@ -218,11 +218,11 @@ function HsbQuiz(props: {
               disabled={isDisplayingResult}
             />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col md:flex-row md:items-center gap-2">
             <Label className="w-28 flex-shrink-0" htmlFor="saturation">
               Saturation (%)
             </Label>
-            <div className="w-36 flex-shrink-0">
+            <div className="md:w-36 flex-shrink-0">
               <Input
                 type="number"
                 id="saturation"
@@ -245,11 +245,11 @@ function HsbQuiz(props: {
               disabled={isDisplayingResult}
             />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col md:flex-row md:items-center gap-2">
             <Label className="w-28 flex-shrink-0" htmlFor="brightness">
               Brightness (%)
             </Label>
-            <div className="w-36 flex-shrink-0">
+            <div className="md:w-36 flex-shrink-0">
               <Input
                 type="number"
                 id="brightness"
@@ -273,7 +273,7 @@ function HsbQuiz(props: {
             />
           </div>
         </div>
-        <div className="py-5">
+        <div className="py-12">
           <Button className="w-full" type="submit">
             {state.mode === 'guess'
               ? 'Submit'
