@@ -48,3 +48,27 @@ export function hsbToRgb(hue: number, saturation: number, brightness: number) {
 
   return { r: r * 255, g: g * 255, b: b * 255 };
 }
+
+export type HsbValues = {
+  h: number;
+  s: number;
+  b: number;
+};
+
+export const getRandomHsb = (): HsbValues => ({
+  h: randomIntFromInterval(0, 359),
+  s: randomIntFromInterval(0, 100),
+  b: randomIntFromInterval(20, 100),
+});
+
+const getMinorAngle = (angleInDegree: number) =>
+  angleInDegree > 180 ? 360 - angleInDegree : angleInDegree;
+
+export const computeMarks = (hsbGuess: HsbValues, actualHsb: HsbValues) => {
+  const hMarks =
+    (180 - Math.abs(getMinorAngle(hsbGuess.h - actualHsb.h))) / 180;
+  const sMarks = (100 - Math.abs(hsbGuess.s - actualHsb.s)) / 100;
+  const bMarks = (100 - Math.abs(hsbGuess.b - actualHsb.b)) / 100;
+
+  return Math.round(((hMarks + sMarks + bMarks) / 3) * 100);
+};
