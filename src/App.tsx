@@ -292,10 +292,10 @@ function HsbQuiz(props: {
             ref={submitButtonRef}
           >
             {state.mode === 'guess'
-              ? 'Submit'
+              ? 'SUBMIT'
               : state.questionNum >= props.totalQuestion
-              ? 'Get Marks'
-              : 'Next'}
+              ? 'GET MARKS'
+              : 'NEXT'}
           </Button>
         </div>
       </form>
